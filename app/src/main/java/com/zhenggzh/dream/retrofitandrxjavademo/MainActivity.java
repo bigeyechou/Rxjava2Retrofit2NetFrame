@@ -35,12 +35,7 @@ public class MainActivity extends AppCompatActivity {
     public void onClickButton(Button button){
         switch (button.getId()){
             case R.id.btn1:
-                break;
-            case R.id.btn2:
                 getData();
-                break;
-            case R.id.btn3:
-
                 break;
             default:
 
@@ -48,16 +43,20 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+
+    /**
+     * 请求数据
+     */
     private void getData() {
         OnSuccessAndFaultListener l = new OnSuccessAndFaultListener() {
             @Override
             public void onSuccess(String result) {
-
+                //成功
             }
 
             @Override
             public void onFault(String errorMsg) {
-
+                //失败
             }
         };
         MovieSubscribe.getDouBanMovie(new OnSuccessAndFaultSub(l),start,count);

@@ -12,6 +12,7 @@ import rx.Subscriber;
 
 /**
  * Created by 眼神 on 2018/3/27.
+ * 建议：把功能模块来分别存放不同的请求方法，比如登录注册类LoginSubscribe、电影类MovieSubscribe
  */
 
 public class MovieSubscribe {
