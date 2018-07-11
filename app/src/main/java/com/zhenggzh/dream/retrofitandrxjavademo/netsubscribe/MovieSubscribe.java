@@ -3,12 +3,12 @@ package com.zhenggzh.dream.retrofitandrxjavademo.netsubscribe;
 import com.zhenggzh.dream.retrofitandrxjavademo.bean.DouBanMovieRequest;
 import com.zhenggzh.dream.retrofitandrxjavademo.netutils.HttpMethods;
 
+import io.reactivex.Observable;
+import io.reactivex.observers.DisposableObserver;
+
 import java.util.HashMap;
 import java.util.Map;
-
 import okhttp3.ResponseBody;
-import rx.Observable;
-import rx.Subscriber;
 
 /**
  * Created by 眼神 on 2018/3/27.
@@ -17,14 +17,13 @@ import rx.Subscriber;
 
 public class MovieSubscribe {
     /**
-     * 获取豆瓣电影
+     * 获取数据
      */
-    public static void getDouBanMovie(Subscriber<ResponseBody> subscriber,int start,int count) {
+    public static void getData(DisposableObserver<ResponseBody> subscriber, int pageNumber, int userId) {
         Map<String,Integer> map = new HashMap<>();
-        map.put("start",start);
-        map.put("count",count);
-
-        Observable observable =  HttpMethods.getInstance().getHttpApi().getDoubanDatanew(map);
+        map.put("start",pageNumber);
+        map.put("count",userId);
+        Observable observable =  HttpMethods.getInstance().getHttpApi().getDataForMap(map);
         HttpMethods.getInstance().toSubscribe(observable, subscriber);
     }
 }

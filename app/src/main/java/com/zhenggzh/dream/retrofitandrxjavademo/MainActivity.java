@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Button;
 
+import android.widget.Toast;
 import com.zhenggzh.dream.retrofitandrxjavademo.netsubscribe.MovieSubscribe;
 import com.zhenggzh.dream.retrofitandrxjavademo.netutils.OnSuccessAndFaultListener;
 import com.zhenggzh.dream.retrofitandrxjavademo.netutils.OnSuccessAndFaultSub;
@@ -16,13 +17,9 @@ public class MainActivity extends AppCompatActivity {
 
     @Bind(R.id.btn1)
     Button btn1;
-    @Bind(R.id.btn2)
-    Button btn2;
-    @Bind(R.id.btn3)
-    Button btn3;
 
-    private int start = 0;
-    private int count = 20;
+    private int pageNumber;
+    private int userId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         ButterKnife.bind(this);
     }
 
-    @OnClick({R.id.btn1,R.id.btn2,R.id.btn3})
+    @OnClick({R.id.btn1})
     public void onClickButton(Button button){
         switch (button.getId()){
             case R.id.btn1:
@@ -52,14 +49,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(String result) {
                 //成功
+                Toast.makeText(MainActivity.this,"请求成功："+result,Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onFault(String errorMsg) {
                 //失败
+                Toast.makeText(MainActivity.this,"请求失败："+errorMsg,Toast.LENGTH_SHORT).show();
             }
         };
-        MovieSubscribe.getDouBanMovie(new OnSuccessAndFaultSub(l),start,count);
+        MovieSubscribe.getData(new OnSuccessAndFaultSub(l),pageNumber,userId);
 
     }
 

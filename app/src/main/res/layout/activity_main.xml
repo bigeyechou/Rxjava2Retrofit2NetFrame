@@ -12,15 +12,5 @@
         android:id="@+id/btn1"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Retrofit获取数据" />
-    <Button
-        android:id="@+id/btn2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Retrofit+Rxjava获取数据" />
-    <Button
-        android:id="@+id/btn3"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="封装Retrofit+Rxjava+okhttp获取数据" />
+        android:text="获取数据" />
 </LinearLayout>

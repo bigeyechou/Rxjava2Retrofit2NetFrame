@@ -7,6 +7,10 @@ import com.zhenggzh.dream.retrofitandrxjavademo.app.BigEyeApplication;
 import com.zhenggzh.dream.retrofitandrxjavademo.netapi.HttpApi;
 import com.zhenggzh.dream.retrofitandrxjavademo.netapi.URLConstant;
 
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
+import io.reactivex.observers.DisposableObserver;
+import io.reactivex.schedulers.Schedulers;
 import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
@@ -19,12 +23,8 @@ import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
-import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
-import rx.Observable;
-import rx.Subscriber;
-import rx.android.schedulers.AndroidSchedulers;
-import rx.schedulers.Schedulers;
 
 /**
  * Created by 眼神 on 2018/3/27.
@@ -132,7 +132,7 @@ public class HttpMethods {
         retrofit = new Retrofit.Builder()
                 .client(okHttpBuilder.build())
                 .addConverterFactory(GsonConverterFactory.create())//json转换成JavaBean
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(BASE_URL)
                 .build();
         httpApi = retrofit.create(HttpApi.class);
@@ -162,7 +162,7 @@ public class HttpMethods {
         retrofit = new Retrofit.Builder()
                 .client(okHttpBuilder.build())
                 .addConverterFactory(GsonConverterFactory.create())
-                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(baseUrl)
                 .build();
         httpApi = retrofit.create(HttpApi.class);
@@ -180,7 +180,7 @@ public class HttpMethods {
     /**
      * 设置订阅 和 所在的线程环境
      */
-    public <T> void toSubscribe(Observable<T> o, Subscriber<T> s) {
+    public <T> void toSubscribe(Observable<T> o, DisposableObserver<T> s) {
 
         o.subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
