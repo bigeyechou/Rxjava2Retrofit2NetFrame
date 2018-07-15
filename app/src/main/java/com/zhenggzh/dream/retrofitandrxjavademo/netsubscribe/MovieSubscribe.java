@@ -19,7 +19,7 @@ public class MovieSubscribe {
     /**
      * 获取数据
      */
-    public static void getData(DisposableObserver<ResponseBody> subscriber, int pageNumber, int userId) {
+    public static void getData(int pageNumber, int userId,DisposableObserver<ResponseBody> subscriber) {
         Map<String,Integer> map = new HashMap<>();
         map.put("start",pageNumber);
         map.put("count",userId);

@@ -21,11 +21,11 @@ import retrofit2.http.Url;
  */
 
 public interface HttpApi {
-
-    @POST("接口名")
+    //请填写自己的接口名
+    @POST("")
     Observable<ResponseBody> getDataForBean(@Body DouBanMovieRequest bean);
-
-    @GET("接口名")
+    //请填写自己的接口名
+    @GET("")
     Observable<ResponseBody> getDataForMap(@QueryMap Map<String,Integer> map);
 
     /**

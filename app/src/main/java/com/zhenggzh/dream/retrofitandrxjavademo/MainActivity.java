@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
      * 请求数据
      */
     private void getData() {
-        OnSuccessAndFaultListener l = new OnSuccessAndFaultListener() {
+        MovieSubscribe.getData(pageNumber,userId,new OnSuccessAndFaultSub(new OnSuccessAndFaultListener() {
             @Override
             public void onSuccess(String result) {
                 //成功
@@ -57,9 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 //失败
                 Toast.makeText(MainActivity.this,"请求失败："+errorMsg,Toast.LENGTH_SHORT).show();
             }
-        };
-        MovieSubscribe.getData(new OnSuccessAndFaultSub(l),pageNumber,userId);
-
+        }));
     }
 
 }
