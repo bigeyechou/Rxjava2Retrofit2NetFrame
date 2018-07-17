@@ -1,6 +1,5 @@
 package com.zhenggzh.dream.retrofitandrxjavademo.netsubscribe;
 
-import com.zhenggzh.dream.retrofitandrxjavademo.bean.DouBanMovieRequest;
 import com.zhenggzh.dream.retrofitandrxjavademo.netutils.HttpMethods;
 
 import io.reactivex.Observable;
@@ -23,7 +22,7 @@ public class MovieSubscribe {
         Map<String,Integer> map = new HashMap<>();
         map.put("start",pageNumber);
         map.put("count",userId);
-        Observable observable =  HttpMethods.getInstance().getHttpApi().getDataForMap(map);
+        Observable<ResponseBody> observable =  HttpMethods.getInstance().getHttpApi().getDataForMap(map);
         HttpMethods.getInstance().toSubscribe(observable, subscriber);
     }
 }
