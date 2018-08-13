@@ -27,7 +27,6 @@ public interface HttpApi {
     //请填写自己的接口名
     @GET("")
     Observable<ResponseBody> getDataForMap(@QueryMap Map<String,Integer> map);
-
     /**
      * 通过地址下载一个文件
      */
