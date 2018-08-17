@@ -32,7 +32,8 @@ public class MainActivity extends AppCompatActivity {
     public void onClickButton(Button button){
         switch (button.getId()){
             case R.id.btn1:
-                getData();
+                Toast.makeText(this,"请配置好相关接口:URLConstant->BASE_URL 和 HttpApi->@GET()",Toast.LENGTH_SHORT);
+                // getData();
                 break;
             default:
 
