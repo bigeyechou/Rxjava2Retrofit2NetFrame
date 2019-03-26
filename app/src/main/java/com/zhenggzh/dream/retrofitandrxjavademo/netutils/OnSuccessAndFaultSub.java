@@ -162,15 +162,17 @@ public class OnSuccessAndFaultSub extends DisposableObserver<ResponseBody>
         try {
             final String result = CompressUtils.decompress(body.byteStream());
             Log.e("body", result);
-            JSONObject jsonObject = new JSONObject(result);
-            int resultCode = jsonObject.getInt("ErrorCode");
-            if (resultCode == 1) {
-                mOnSuccessAndFaultListener.onSuccess(result);
-            } else {
-                String errorMsg = jsonObject.getString("ErrorMessage");
-                mOnSuccessAndFaultListener.onFault(errorMsg);
-                Log.e("OnSuccessAndFaultSub", "errorMsg: " + errorMsg);
-            }
+            mOnSuccessAndFaultListener.onSuccess(result);
+//TODO 天气接口返回数据格式没有 resultCode，onNext放大请根据自己公司返回的接口来调整
+//            JSONObject jsonObject = new JSONObject(result);
+//            int resultCode = jsonObject.getInt("ErrorCode");
+//            if (resultCode == 1) {
+//                mOnSuccessAndFaultListener.onSuccess(result);
+//            } else {
+//                String errorMsg = jsonObject.getString("ErrorMessage");
+//                mOnSuccessAndFaultListener.onFault(errorMsg);
+//                Log.e("OnSuccessAndFaultSub", "errorMsg: " + errorMsg);
+//            }
         } catch (Exception e) {
             e.printStackTrace();
         }

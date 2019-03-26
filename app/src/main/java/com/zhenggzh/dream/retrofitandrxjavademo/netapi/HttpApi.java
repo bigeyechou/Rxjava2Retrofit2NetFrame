@@ -1,7 +1,5 @@
 package com.zhenggzh.dream.retrofitandrxjavademo.netapi;
 
-import com.zhenggzh.dream.retrofitandrxjavademo.bean.DouBanMovieRequest;
-
 import io.reactivex.Observable;
 import java.util.Map;
 
@@ -10,6 +8,7 @@ import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
+import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
 import retrofit2.http.Streaming;
 import retrofit2.http.Url;
@@ -21,9 +20,10 @@ import retrofit2.http.Url;
  */
 
 public interface HttpApi {
-    //请填写自己的接口名
-    @POST("")
-    Observable<ResponseBody> getDataForBean(@Body DouBanMovieRequest bean);
+    //豆瓣榜单接口测试
+    @GET("api")
+    Observable<ResponseBody> getDataForBean(@QueryMap Map<String,String> map);
+
     //请填写自己的接口名
     @GET("")
     Observable<ResponseBody> getDataForMap(@QueryMap Map<String,Integer> map);

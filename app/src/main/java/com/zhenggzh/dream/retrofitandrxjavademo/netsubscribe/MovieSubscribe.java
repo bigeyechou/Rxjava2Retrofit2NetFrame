@@ -25,4 +25,15 @@ public class MovieSubscribe {
         Observable<ResponseBody> observable =  HttpMethods.getInstance().getHttpApi().getDataForMap(map);
         HttpMethods.getInstance().toSubscribe(observable, subscriber);
     }
+
+    /**
+     * 获取数据
+     */
+    public static void getDouBanData(String cityName,DisposableObserver<ResponseBody> subscriber) {
+        Map<String,String> map = new HashMap<>();
+        map.put("version","v1");
+        map.put("city",cityName);
+        Observable<ResponseBody> observable =  HttpMethods.getInstance().getHttpApi().getDataForBean(map);
+        HttpMethods.getInstance().toSubscribe(observable, subscriber);
+    }
 }
