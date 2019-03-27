@@ -1,0 +1,11 @@
+基于Retrofit+Rxjava+Okhttp封装的网络请求框架
+
+1.修改BaseUrl:netapi包下URLConstant类中（配置本地、测试、正式环境的地址）
+2.okhttp的配置：主要是公共参数（HeaderParam），netutils包下HttpMethods类：headerInterceptor
+3.HttpApi:get/post方法
+3.OnSuccessAndFaultSub类：封装回调,项目中接收的是gzip压缩过的流,onNext需要修改，根据自己公司接口返回的数据来调整
+4.各种Api类：根据业务模块划分，实现观察者和被观察者的订阅。
+
+
+详情使用介绍请查看简书：https://www.jianshu.com/p/0ad99e598dba
+示例项目地址：https://github.com/bigeyechou/ChouMediaPlayer

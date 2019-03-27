@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
     public void onClickButton(Button button) {
         switch (button.getId()) {
             case R.id.btn1:
-//                Toast.makeText(this,"请配置好相关接口:URLConstant->BASE_URL 和 HttpApi->@GET()",Toast.LENGTH_SHORT);
                 getDouBanData();
                 break;
             default:
@@ -59,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
      * 请求数据
      */
     private void getDouBanData() {
-        MovieSubscribe.getDouBanData(mCityName, new OnSuccessAndFaultSub(new OnSuccessAndFaultListener() {
+        MovieSubscribe.getWeatherDataForBody(mCityName, new OnSuccessAndFaultSub(new OnSuccessAndFaultListener() {
             @Override
             public void onSuccess(String result) {
                 //成功

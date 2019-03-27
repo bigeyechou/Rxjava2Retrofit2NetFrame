@@ -32,6 +32,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class HttpMethods {
     public String TAG = "HttpMethods";
+    //TODO 填写自己的报名
     public static final String CACHE_NAME = "yourApkName";
     public static String BASE_URL = URLConstant.BASE_URL;
     private static final int DEFAULT_CONNECT_TIMEOUT = 30;

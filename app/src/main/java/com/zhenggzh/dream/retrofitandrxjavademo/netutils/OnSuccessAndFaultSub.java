@@ -163,7 +163,7 @@ public class OnSuccessAndFaultSub extends DisposableObserver<ResponseBody>
             final String result = CompressUtils.decompress(body.byteStream());
             Log.e("body", result);
             mOnSuccessAndFaultListener.onSuccess(result);
-//TODO 天气接口返回数据格式没有 resultCode，onNext放大请根据自己公司返回的接口来调整
+//TODO 天气接口返回数据格式没有resultCode等公共信息，onNext方法请根据自己公司接口返回的数据来调整
 //            JSONObject jsonObject = new JSONObject(result);
 //            int resultCode = jsonObject.getInt("ErrorCode");
 //            if (resultCode == 1) {

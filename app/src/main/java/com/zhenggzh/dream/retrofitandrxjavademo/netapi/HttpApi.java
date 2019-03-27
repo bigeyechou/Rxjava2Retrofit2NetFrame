@@ -1,12 +1,17 @@
 package com.zhenggzh.dream.retrofitandrxjavademo.netapi;
 
+import com.zhenggzh.dream.retrofitandrxjavademo.bean.BaseRequestBean;
+import com.zhenggzh.dream.retrofitandrxjavademo.bean.WeatherRequestBean;
+
 import io.reactivex.Observable;
+
 import java.util.Map;
 
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
+import retrofit2.http.HTTP;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
 import retrofit2.http.QueryMap;
@@ -15,18 +20,21 @@ import retrofit2.http.Url;
 
 /**
  * Created by 眼神 on 2018/3/27.
- *
+ * <p>
  * 存放所有的Api
  */
 
 public interface HttpApi {
-    //豆瓣榜单接口测试
     @GET("api")
-    Observable<ResponseBody> getDataForBean(@QueryMap Map<String,String> map);
+    Observable<ResponseBody> getWeatherDataForQuery(@Query("version") String version, @Query("city") String city);
 
-    //请填写自己的接口名
-    @GET("")
-    Observable<ResponseBody> getDataForMap(@QueryMap Map<String,Integer> map);
+    @GET("api")
+    Observable<ResponseBody> getWeatherDataForMap(@QueryMap Map<String, String> map);
+
+    //天气预报接口测试  @GET 不支持@Body类型
+    @POST("api")
+    Observable<ResponseBody> getWeatherDataForBody(@Body BaseRequestBean<WeatherRequestBean> requestBean);
+
     /**
      * 通过地址下载一个文件
      */
