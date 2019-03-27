@@ -32,7 +32,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 
 public class RetrofitFactory {
-    public String TAG = "HttpMethods";
+    public String TAG = "RetrofitFactory";
     //TODO 填写自己的包名
     public static final String CACHE_NAME = "yourApkName";
     public static String BASE_URL = URLConstant.BASE_URL;
