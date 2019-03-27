@@ -9,7 +9,7 @@
     基于Retrofit+Rxjava+Okhttp封装的网络请求框架
     使用时请自行修改okhttp的公共参数（HeaderParam）
     1.HttpService请求的接口
-    2.HttpMethods类：初始化并配置Retrofit和OkHttp
+    2.RetrofitFactory类：初始化并配置Retrofit和OkHttp
     3.OnSuccessAndFaultSub类：封装回调,项目中接收的是gzip压缩过的流
     4.各种Api类：根据业务模块划分，实现观察者和被观察者的订阅。
     
