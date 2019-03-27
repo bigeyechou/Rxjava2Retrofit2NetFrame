@@ -28,11 +28,12 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
  * Created by 眼神 on 2018/3/27.
+ * 封装Retrofit配置
  */
 
-public class HttpMethods {
+public class RetrofitFactory {
     public String TAG = "HttpMethods";
-    //TODO 填写自己的报名
+    //TODO 填写自己的包名
     public static final String CACHE_NAME = "yourApkName";
     public static String BASE_URL = URLConstant.BASE_URL;
     private static final int DEFAULT_CONNECT_TIMEOUT = 30;
@@ -47,7 +48,7 @@ public class HttpMethods {
     private OkHttpClient.Builder okHttpBuilder;
 
     //构造方法私有
-    private HttpMethods() {
+    private RetrofitFactory() {
         //手动创建一个OkHttpClient并设置超时时间
         okHttpBuilder = new OkHttpClient.Builder();
         /**
@@ -141,12 +142,12 @@ public class HttpMethods {
 
     //在访问HttpMethods时创建单例
     private static class SingletonHolder {
-        private static final HttpMethods INSTANCE = new HttpMethods();
+        private static final RetrofitFactory INSTANCE = new RetrofitFactory();
 
     }
 
     //获取单例
-    public static HttpMethods getInstance() {
+    public static RetrofitFactory getInstance() {
         return SingletonHolder.INSTANCE;
     }
 

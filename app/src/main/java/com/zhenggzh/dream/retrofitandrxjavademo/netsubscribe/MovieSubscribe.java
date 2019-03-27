@@ -2,7 +2,7 @@ package com.zhenggzh.dream.retrofitandrxjavademo.netsubscribe;
 
 import com.zhenggzh.dream.retrofitandrxjavademo.bean.BaseRequestBean;
 import com.zhenggzh.dream.retrofitandrxjavademo.bean.WeatherRequestBean;
-import com.zhenggzh.dream.retrofitandrxjavademo.netutils.HttpMethods;
+import com.zhenggzh.dream.retrofitandrxjavademo.netutils.RetrofitFactory;
 
 import io.reactivex.Observable;
 import io.reactivex.observers.DisposableObserver;
@@ -22,8 +22,8 @@ public class MovieSubscribe {
      * 获取天气数据@Query
      */
     public static void getWeatherDataForQuery(String cityName,DisposableObserver<ResponseBody> subscriber) {
-        Observable<ResponseBody> observable =  HttpMethods.getInstance().getHttpApi().getWeatherDataForQuery("v1",cityName);
-        HttpMethods.getInstance().toSubscribe(observable, subscriber);
+        Observable<ResponseBody> observable =  RetrofitFactory.getInstance().getHttpApi().getWeatherDataForQuery("v1",cityName);
+        RetrofitFactory.getInstance().toSubscribe(observable, subscriber);
     }
 
     /**
@@ -33,8 +33,8 @@ public class MovieSubscribe {
         Map<String,String> map = new HashMap<>();
         map.put("version","v1");
         map.put("city",cityName);
-        Observable<ResponseBody> observable =  HttpMethods.getInstance().getHttpApi().getWeatherDataForMap(map);
-        HttpMethods.getInstance().toSubscribe(observable, subscriber);
+        Observable<ResponseBody> observable =  RetrofitFactory.getInstance().getHttpApi().getWeatherDataForMap(map);
+        RetrofitFactory.getInstance().toSubscribe(observable, subscriber);
     }
 
     /**
@@ -45,7 +45,7 @@ public class MovieSubscribe {
         bean.setCity(cityName);
         BaseRequestBean<WeatherRequestBean> requestBean = new BaseRequestBean<>();
         requestBean.setObj(bean);
-        Observable<ResponseBody> observable =  HttpMethods.getInstance().getHttpApi().getWeatherDataForBody(requestBean);
-        HttpMethods.getInstance().toSubscribe(observable, subscriber);
+        Observable<ResponseBody> observable =  RetrofitFactory.getInstance().getHttpApi().getWeatherDataForBody(requestBean);
+        RetrofitFactory.getInstance().toSubscribe(observable, subscriber);
     }
 }

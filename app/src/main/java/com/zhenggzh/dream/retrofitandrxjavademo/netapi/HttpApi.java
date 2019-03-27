@@ -36,10 +36,11 @@ public interface HttpApi {
     Observable<ResponseBody> getWeatherDataForBody(@Body BaseRequestBean<WeatherRequestBean> requestBean);
 
     /**
-     * 通过地址下载一个文件
+     * 文件下载
      */
     @GET()
-    @Streaming
-    Call<ResponseBody> downloadFile(@Url String fileUrl);
+    @Streaming//使用Streaming 方式 Retrofit 不会一次性将ResponseBody 读取进入内存，否则文件很多容易OOM
+    Call<ResponseBody> downloadFile(@Url String fileUrl);//返回值使用 ResponseBody 之后会对ResponseBody 进行读取
 
+    @
 }
