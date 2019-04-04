@@ -1,15 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 27
-    buildToolsVersion '27.0.1'
+    compileSdkVersion 28
+    buildToolsVersion '28.0.0'
     defaultConfig {
         applicationId "com.zhenggzh.dream.retrofitandrxjavademo"
         minSdkVersion 19
-        targetSdkVersion 27
+        targetSdkVersion 28
         versionCode 2
         versionName "1.1"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+        javaCompileOptions { annotationProcessorOptions { includeCompileClasspath = true } }
     }
     buildTypes {
         release {
@@ -19,30 +20,31 @@ android {
     }
     productFlavors {}
     dependencies {
-        compile fileTree(include: ['*.jar'], dir: 'libs')
-        androidTestCompile('com.android.support.test.espresso:espresso-core:2.2.2', {
+        implementation fileTree(include: ['*.jar'], dir: 'libs')
+        androidTestImplementation ('com.android.support.test.espresso:espresso-core:2.2.2', {
             exclude group: 'com.android.support', module: 'support-annotations'
         })
-        compile 'com.android.support:appcompat-v7:25.2.0'
-        testCompile 'junit:junit:4.12'
-        compile 'com.google.code.gson:gson:2.6.2'
-        //导入Gson 库
+        implementation 'com.android.support:appcompat-v7:28.0.0'
+        testImplementation 'junit:junit:4.12'
+        //约束布局
+        implementation 'com.android.support.constraint:constraint-layout:1.1.2'
         //导入RxJava 和 RxAndroid
-        compile 'io.reactivex.rxjava2:rxandroid:2.0.2'
-        compile 'io.reactivex.rxjava2:rxjava:2.x.y'
-        compile 'com.squareup.retrofit2:retrofit:2.3.0'
+        implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
+        implementation 'io.reactivex.rxjava2:rxjava:2.x.y'
+        implementation 'com.squareup.retrofit2:retrofit:2.3.0'
         //导入retrofit
-        compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+        implementation 'com.squareup.retrofit2:converter-gson:2.3.0'
         //转换器，请求结果转换成Model
-        compile 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
+        implementation 'com.squareup.retrofit2:adapter-rxjava2:2.3.0'
         //配合Rxjava 使用
-        compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'
+        implementation 'com.squareup.okhttp3:logging-interceptor:3.8.1'
         //添加HttpLoggingInterceptor进行调试
         //butterknife不是必须
-        compile 'com.jakewharton:butterknife:7.0.1'
+        implementation 'com.jakewharton:butterknife:7.0.1'
         //开源日志库
-        compile 'com.orhanobut:logger:1.15'
-        compile 'com.google.code.gson:gson:2.8.5'
+        implementation 'com.orhanobut:logger:1.15'
+        //导入Gson 库
+        implementation 'com.google.code.gson:gson:2.8.5'
     }
 }
 

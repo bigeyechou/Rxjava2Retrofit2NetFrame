@@ -1,6 +1,5 @@
-package com.zhenggzh.dream.retrofitandrxjavademo.rxjavatest;
+package com.zhenggzh.dream.retrofitandrxjavademo.operator;
 
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -8,11 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
-import com.google.gson.Gson;
-import com.zhenggzh.dream.retrofitandrxjavademo.MainActivity;
 import com.zhenggzh.dream.retrofitandrxjavademo.R;
-import com.zhenggzh.dream.retrofitandrxjavademo.app.BaseConstant;
-import com.zhenggzh.dream.retrofitandrxjavademo.bean.WeatherRequestBean;
 import com.zhenggzh.dream.retrofitandrxjavademo.bean.WeatherResponseBean;
 import com.zhenggzh.dream.retrofitandrxjavademo.netsubscribe.MovieSubscribe;
 import com.zhenggzh.dream.retrofitandrxjavademo.netutils.OnSuccessAndFaultListener;
@@ -23,7 +18,6 @@ import com.zhenggzh.dream.retrofitandrxjavademo.utils.GsonUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
