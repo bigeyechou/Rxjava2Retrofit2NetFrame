@@ -26,6 +26,16 @@
         <activity
             android:name=".operator.RxOperatorMainActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
+
+        <!-- Zip操作符页面 -->
+        <activity
+            android:name=".operator.ZipOperatorActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
+
+        <!-- Map操作符页面 -->
+        <activity
+            android:name=".operator.MapOperatorActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize" />
     </application>
 
 </manifest>

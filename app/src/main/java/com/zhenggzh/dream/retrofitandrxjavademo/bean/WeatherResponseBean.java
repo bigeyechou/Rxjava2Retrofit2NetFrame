@@ -75,8 +75,6 @@ public class WeatherResponseBean {
          * tem : 21℃
          * win : ["西南风","南风"]
          * win_speed : <3级
-         * hours : [{"day":"26日08时","wea":"晴","tem":"12℃","win":"西南风","win_speed":"<3级"},{"day":"26日11时","wea":"多云","tem":"18℃","win":"西南风","win_speed":"<3级"},{"day":"26日14时","wea":"多云","tem":"21℃","win":"西南风","win_speed":"<3级"},{"day":"26日17时","wea":"多云","tem":"19℃","win":"西南风","win_speed":"<3级"},{"day":"26日20时","wea":"多云","tem":"15℃","win":"西南风","win_speed":"<3级"},{"day":"26日23时","wea":"多云","tem":"13℃","win":"南风","win_speed":"<3级"},{"day":"27日02时","wea":"多云","tem":"12℃","win":"南风","win_speed":"<3级"},{"day":"27日05时","wea":"多云","tem":"11℃","win":"南风","win_speed":"<3级"}]
-         * index : [{"title":"紫外线指数","level":"弱","desc":"辐射较弱，涂擦SPF12-15、PA+护肤品。"},{"title":"减肥指数","level":null,"desc":"天气较舒适，减肥正当时。"},{"title":"健臻·血糖指数","level":"不易波动","desc":"天气条件好，血糖不易波动，可适时进行户外锻炼。"},{"title":"穿衣指数","level":"较舒适","desc":"建议穿薄外套或牛仔裤等服装。"},{"title":"洗车指数","level":"较适宜","desc":"无雨且风力较小，易保持清洁度。"},{"title":"空气污染扩散指数","level":"中","desc":"易感人群应适当减少室外活动。"}]
          */
 
         private String day;
@@ -93,9 +91,6 @@ public class WeatherResponseBean {
         private String tem;
         private String win_speed;
         private List<String> win;
-        private List<HoursBean> hours;
-        private List<IndexBean> index;
-
         public String getDay() {
             return day;
         }
@@ -208,136 +203,6 @@ public class WeatherResponseBean {
             this.win = win;
         }
 
-        public List<HoursBean> getHours() {
-            return hours;
-        }
-
-        public void setHours(List<HoursBean> hours) {
-            this.hours = hours;
-        }
-
-        public List<IndexBean> getIndex() {
-            return index;
-        }
-
-        public void setIndex(List<IndexBean> index) {
-            this.index = index;
-        }
-
-        public static class HoursBean {
-            /**
-             * day : 26日08时
-             * wea : 晴
-             * tem : 12℃
-             * win : 西南风
-             * win_speed : <3级
-             */
-
-            private String day;
-            private String wea;
-            private String tem;
-            private String win;
-            private String win_speed;
-
-            public String getDay() {
-                return day;
-            }
-
-            public void setDay(String day) {
-                this.day = day;
-            }
-
-            public String getWea() {
-                return wea;
-            }
-
-            public void setWea(String wea) {
-                this.wea = wea;
-            }
-
-            public String getTem() {
-                return tem;
-            }
-
-            public void setTem(String tem) {
-                this.tem = tem;
-            }
-
-            public String getWin() {
-                return win;
-            }
-
-            public void setWin(String win) {
-                this.win = win;
-            }
-
-            public String getWin_speed() {
-                return win_speed;
-            }
-
-            public void setWin_speed(String win_speed) {
-                this.win_speed = win_speed;
-            }
-
-            @Override
-            public String toString() {
-                return "HoursBean{" +
-                        "day='" + day + '\'' +
-                        ", wea='" + wea + '\'' +
-                        ", tem='" + tem + '\'' +
-                        ", win='" + win + '\'' +
-                        ", win_speed='" + win_speed + '\'' +
-                        '}';
-            }
-
-
-        }
-
-        public static class IndexBean {
-            /**
-             * title : 紫外线指数
-             * level : 弱
-             * desc : 辐射较弱，涂擦SPF12-15、PA+护肤品。
-             */
-
-            private String title;
-            private String level;
-            private String desc;
-
-            public String getTitle() {
-                return title;
-            }
-
-            public void setTitle(String title) {
-                this.title = title;
-            }
-
-            public String getLevel() {
-                return level;
-            }
-
-            public void setLevel(String level) {
-                this.level = level;
-            }
-
-            public String getDesc() {
-                return desc;
-            }
-
-            public void setDesc(String desc) {
-                this.desc = desc;
-            }
-
-            @Override
-            public String toString() {
-                return "IndexBean{" +
-                        "title='" + title + '\'' +
-                        ", level='" + level + '\'' +
-                        ", desc='" + desc + '\'' +
-                        '}';
-            }
-        }
-
         @Override
         public String toString() {
             return "DataBean{" +
@@ -355,8 +220,6 @@ public class WeatherResponseBean {
                     ", tem='" + tem + '\'' +
                     ", win_speed='" + win_speed + '\'' +
                     ", win=" + win +
-                    ", hours=" + hours.toString() +
-                    ", index=" + index.toString() +
                     '}';
         }
     }

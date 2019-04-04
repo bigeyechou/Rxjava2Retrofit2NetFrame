@@ -1,16 +1,17 @@
 package com.zhenggzh.dream.retrofitandrxjavademo.operator;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.os.Looper;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
+import android.widget.Button;
+import android.widget.TextView;
 
 import com.zhenggzh.dream.retrofitandrxjavademo.R;
 import com.zhenggzh.dream.retrofitandrxjavademo.bean.WeatherResponseBean;
-import com.zhenggzh.dream.retrofitandrxjavademo.netsubscribe.MovieSubscribe;
-import com.zhenggzh.dream.retrofitandrxjavademo.netutils.OnSuccessAndFaultListener;
 import com.zhenggzh.dream.retrofitandrxjavademo.netutils.OnSuccessAndFaultSub;
 import com.zhenggzh.dream.retrofitandrxjavademo.netutils.RetrofitFactory;
 import com.zhenggzh.dream.retrofitandrxjavademo.utils.CompressUtils;
@@ -19,6 +20,9 @@ import com.zhenggzh.dream.retrofitandrxjavademo.utils.GsonUtils;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -34,82 +38,73 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 /**
- * RxJava测验
+ * RxJava zip操作符
  */
-public class RxJavaMainActivity extends AppCompatActivity {
+public class ZipOperatorActivity extends AppCompatActivity {
 
+    private final String mRxJavaExplain = "zip操作符:\n" +
+            "合并多个被观察者的数据流然后发送合并后的数据流。\n" +
+            "严格按照顺序来发送";
     private static String TAG = "RxJavaMainActivity.class";
+    @Bind(R.id.btn_zip_explain)
+    Button btnZipExplain;
+    @Bind(R.id.btn_zip)
+    Button btnZip;
+    @Bind(R.id.tv_result)
+    TextView tvResult;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rxjava_layout);
+        setContentView(R.layout.activity_zip_operator_layout);
+        ButterKnife.bind(this);
+
+        tvResult.setText(mRxJavaExplain);
     }
 
-
-    public void rx1(View v) {
-//        rxText();
-//        rxFlatMap();
-        rxZip();
+    @OnClick({R.id.btn_zip_explain, R.id.btn_zip})
+    public void onClickButton(Button button) {
+        switch (button.getId()) {
+            case R.id.btn_zip:
+                rxZip();
+                break;
+            case R.id.btn_zip_explain:
+                break;
+        }
     }
 
     /**
      * RxJava：zip操作符
-     *
-     * 示例：实现多接口共同更新UI
      */
+    @SuppressLint("CheckResult")
     private void rxZip() {
         Observable<ResponseBody> observable1 = RetrofitFactory.getInstance().getHttpApi().getWeatherDataForQuery("v1", "北京");
         Observable<ResponseBody> observable2 = RetrofitFactory.getInstance().getHttpApi().getWeatherDataForQuery("v1", "上海");
         Observable.zip(observable1, observable2, new BiFunction<ResponseBody, ResponseBody, List<WeatherResponseBean>>() {
             @Override
             public List<WeatherResponseBean> apply(ResponseBody responseBody1, ResponseBody responseBody2) throws Exception {
-                String result1 = CompressUtils.decompress(responseBody1.byteStream());
-                String result2 = CompressUtils.decompress(responseBody2.byteStream());
-                WeatherResponseBean data1 = GsonUtils.fromJson(result1, WeatherResponseBean.class);
-                WeatherResponseBean data2 = GsonUtils.fromJson(result2, WeatherResponseBean.class);
-
-                List<WeatherResponseBean> listWeather = new ArrayList<>();
-                listWeather.add(data1);
-                listWeather.add(data2);
-                return listWeather;
+                    String result1 = CompressUtils.decompress(responseBody1.byteStream());
+                    String result2 = CompressUtils.decompress(responseBody2.byteStream());
+                    WeatherResponseBean data1 = GsonUtils.fromJson(result1, WeatherResponseBean.class);
+                    WeatherResponseBean data2 = GsonUtils.fromJson(result2, WeatherResponseBean.class);
+                    List<WeatherResponseBean> listWeather = new ArrayList<>();
+                    listWeather.add(data1);
+                    listWeather.add(data2);
+                    return listWeather;
             }
-        }).subscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<List<WeatherResponseBean>>() {
+        }).subscribeOn(Schedulers.io()).unsubscribeOn(Schedulers.io()).observeOn(AndroidSchedulers.mainThread()).subscribe(new Consumer<List<WeatherResponseBean>>() {
             @Override
             public void accept(List<WeatherResponseBean> weatherResponseBeans) throws Exception {
-                Log.e(TAG,"zip合并后："+weatherResponseBeans.toString());
+                Log.e(TAG, "zip合并后：" + weatherResponseBeans.toString());
+                tvResult.setText("zip合并后：" + weatherResponseBeans.toString());
             }
         }, new Consumer<Throwable>() {
             @Override
             public void accept(Throwable throwable) throws Exception {
-                Log.e(TAG,"zip合并失败");
+                Log.e(TAG, "zip合并失败");
+                tvResult.setText("zip合并失败");
             }
         });
-    }
-
-    /**
-     * 请求数据
-     */
-    private void getDouBanData() {
-        MovieSubscribe.getWeatherDataForBody("北京", new OnSuccessAndFaultSub(new OnSuccessAndFaultListener() {
-            @Override
-            public void onSuccess(String result) {
-                //成功
-                Toast.makeText(RxJavaMainActivity.this, "请求成功：", Toast.LENGTH_SHORT).show();
-                WeatherResponseBean weather = GsonUtils.fromJson(result,
-                        WeatherResponseBean.class);
-            }
-
-            @Override
-            public void onFault(String errorMsg) {
-                //失败
-                Toast.makeText(RxJavaMainActivity.this, "请求失败：" + errorMsg, Toast.LENGTH_SHORT).show();
-            }
-        }));
-    }
-
-    private void rxFlatMap() {
-
     }
 
     private void rxText() {
