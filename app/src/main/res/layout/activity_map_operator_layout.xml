@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/btn_map_explain"
+        android:layout_width="0dp"
+        android:layout_height="44dp"
+        android:text="map操作符概念"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent" />
+
+    <Button
+        android:id="@+id/btn_map_no_retrofit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="请求数据(不使用Retrofit)"
+        app:layout_constraintBottom_toTopOf="@+id/tv_result"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toLeftOf="@+id/btn_map_no_retrofit_backpressure"
+        app:layout_constraintTop_toBottomOf="@+id/btn_map_explain" />
+
+    <Button
+        android:id="@+id/btn_map_no_retrofit_backpressure"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="请求数据(不使用Retrofit但支持背压)"
+        app:layout_constraintBottom_toTopOf="@+id/tv_result"
+        app:layout_constraintLeft_toRightOf="@+id/btn_map_no_retrofit"
+        app:layout_constraintRight_toLeftOf="@+id/btn_map"
+        app:layout_constraintTop_toBottomOf="@+id/btn_map_explain" />
+
+    <Button
+        android:id="@+id/btn_map"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="请求数据(不支持背压)"
+        app:layout_constraintBottom_toTopOf="@+id/tv_result"
+        app:layout_constraintLeft_toRightOf="@+id/btn_map_no_retrofit_backpressure"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_map_explain" />
+
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_map" />
+
+
+</android.support.constraint.ConstraintLayout>

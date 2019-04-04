@@ -20,20 +20,25 @@ public class RxOperatorMainActivity extends AppCompatActivity {
 
     @Bind(R.id.btn_zip)
     Button btnZip;
+    @Bind(R.id.btn_map)
+    Button btnMap;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_rxjava_operator_main_layout);
+        setContentView(R.layout.activity_operator_main_layout);
         ButterKnife.bind(this);
     }
 
 
-    @OnClick({R.id.btn_zip})
+    @OnClick({R.id.btn_map,R.id.btn_zip})
     public void onClickButton(Button button) {
         switch (button.getId()) {
             case R.id.btn_zip:
-                startActivity(new Intent(RxOperatorMainActivity.this,ZipOperatorActivity.class));
+                startActivity(new Intent(RxOperatorMainActivity.this, ZipOperatorActivity.class));
+                break;
+            case R.id.btn_map:
+                startActivity(new Intent(RxOperatorMainActivity.this,MapOperatorActivity.class));
                 break;
             default:
                 break;
