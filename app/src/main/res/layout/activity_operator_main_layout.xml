@@ -6,9 +6,15 @@
     android:layout_height="match_parent">
 
     <Button
+        android:id="@+id/btn_create_operator"
+        android:layout_width="match_parent"
+        android:layout_height= "wrap_content"
+        android:text="创建操作符集合"/>
+    <Button
         android:id="@+id/btn_map"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/btn_create_operator"
         android:text="map操作符"/>
     <Button
         android:id="@+id/btn_flatmap"
