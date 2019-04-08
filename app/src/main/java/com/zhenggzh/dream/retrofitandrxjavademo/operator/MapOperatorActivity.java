@@ -47,7 +47,7 @@ public class MapOperatorActivity extends AppCompatActivity {
     private final String mRxJavaExplain = "map操作符:\n" +
             "将一个被观察者(Observable)对象通过某种关系转换为另一个被观察者（Observable）对象。\n" +
             "严格按照顺序来发送" +
-            "应用实例：";
+            "应用实例：网络请求的Response转换成相应的Bean";
 
     @Bind(R.id.btn_map_explain)
     Button btnMapExplain;
@@ -150,6 +150,11 @@ public class MapOperatorActivity extends AppCompatActivity {
 
     /**
      * 不使用封装好的retrofit但支持背压的
+     * <p>
+     * 什么是背压？
+     * {当上下游在不同的线程中，通过Observable发射，处理，响应数据流时，如果上游发射数据的速度快于下游接收处理数据的速度，
+     * 这样对于那些没来得及处理的数据就会造成积压，这些数据既不会丢失，也不会被垃圾回收机制回收，而是存放在一个异步缓存池中，
+     * 如果缓存池中的数据一直得不到处理，越积越多，最后就会造成内存溢出，这便是响应式编程中的背压（backpressure）问题。}
      */
     private void rxMapNoRetrofitBackPressure() {
         Flowable.create(new FlowableOnSubscribe<Response>() {
@@ -176,16 +181,21 @@ public class MapOperatorActivity extends AppCompatActivity {
                         }
                         return null;
                     }
-                }).observeOn(AndroidSchedulers.mainThread())
+                })
+                .subscribeOn(Schedulers.io())//subscribeOn顾名思义，改变了上游的subscribe所在的线程，而在 Flowable 中不仅如此,还同样的改变了Subscription.request所在的线程
+                                            // 调度上游的Flowable的subscribe方法，可能会调度上游Subscription的request 方法，运行在io线程中。
+                .unsubscribeOn(Schedulers.io())//调度上游的Subscription的cancel方法，运行在io线程中。
+                .observeOn(AndroidSchedulers.mainThread())//调度下游Subscriber 的 onNext / onError / onComplete 方法，运行在主线程中。
                 .subscribe(new Subscriber<WeatherResponseBean>() {
-
                     @Override
                     public void onSubscribe(Subscription s) {
                         Log.e(TAG, "开始订阅");
+                        s.request(Long.MAX_VALUE);
                     }
 
                     @Override
                     public void onNext(WeatherResponseBean weatherResponseBean) {
+                        Log.e(TAG, "结果：" + weatherResponseBean.toString());
                         tvResult.setText("不使用retrofit但支持背压：" + weatherResponseBean.toString());
                     }
 
