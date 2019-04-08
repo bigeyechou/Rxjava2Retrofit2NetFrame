@@ -2,8 +2,7 @@
 ### 项目介绍
     NetWorkFrame：Android网络请求框架
     down下来一定要配上自己的接口名，URLConstant和HttpApi的post/get()中！！！！！
-    down下来一定要配上自己的接口名，URLConstant和HttpApi的post/get()中！！！！！
-    down下来一定要配上自己的接口名，URLConstant和HttpApi的post/get()中！！！！！
+    有相关操作符的解释，演示便于大家更快的了解使用强大的操作符~
 
 ### 软件架构
     基于Retrofit+Rxjava+Okhttp封装的网络请求框架
@@ -12,6 +11,7 @@
     2.RetrofitFactory类：初始化并配置Retrofit和OkHttp
     3.OnSuccessAndFaultSub类：封装回调,项目中接收的是gzip压缩过的流
     4.各种Api类：根据业务模块划分，实现观察者和被观察者的订阅。
+    5.operator包下是解释操作符相关的，可以全部删掉~
     
 ### 使用说明
     可直接使用
