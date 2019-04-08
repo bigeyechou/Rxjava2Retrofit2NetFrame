@@ -6,6 +6,8 @@
 3.OnSuccessAndFaultSub类：封装回调,项目中接收的是gzip压缩过的流,onNext需要修改，根据自己公司接口返回的数据来调整
 4.各种Api类：根据业务模块划分，实现观察者和被观察者的订阅。
 
+5.operator是RxJava操作符说明用法相关，可删掉
+
 
 详情使用介绍请查看简书：https://www.jianshu.com/p/0ad99e598dba
 示例项目地址：https://github.com/bigeyechou/ChouMediaPlayer
