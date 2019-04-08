@@ -36,6 +36,10 @@
         <activity
             android:name=".operator.MapOperatorActivity"
             android:configChanges="orientation|keyboardHidden|screenSize" />
+
+        <!-- FlatMap操作符页面 -->
+        <activity android:name=".operator.FlatMapOperatorActivity"
+            android:configChanges="orientation|keyboardHidden|screenSize"/>
     </application>
 
 </manifest>

@@ -29,16 +29,18 @@ import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
+import io.reactivex.functions.Function4;
 import io.reactivex.schedulers.Schedulers;
 import okhttp3.ResponseBody;
 
 /**
- * RxJava zip操作符
+ * RxJava zip操作符（组合操作符）
  */
 public class ZipOperatorActivity extends AppCompatActivity {
 
     private static String TAG = "RxJavaMainActivity";
     private final String mRxJavaExplain = "zip操作符:\n" +
+            "按照自己的规则发射与发射数据项最少的相同的数据。\n" +
             "合并多个被观察者(Observable)的数据流然后发送合并后的数据流。\n" +
             "严格按照顺序来发送\n" +
             "应用实例：多用于合并多个网络请求成一个，实现多个接口数据共同更新UI，如List插入头数据、多个接口里面的数据合并成一个你想要的数据。";
@@ -47,6 +49,8 @@ public class ZipOperatorActivity extends AppCompatActivity {
     Button btnZipExplain;
     @Bind(R.id.btn_zip)
     Button btnZip;
+    @Bind(R.id.btn_zip_more)
+    Button btnZipMore;
     @Bind(R.id.tv_result)
     TextView tvResult;
 
@@ -59,11 +63,14 @@ public class ZipOperatorActivity extends AppCompatActivity {
         tvResult.setText(mRxJavaExplain);
     }
 
-    @OnClick({R.id.btn_zip_explain, R.id.btn_zip})
+    @OnClick({R.id.btn_zip_explain, R.id.btn_zip, R.id.btn_zip_more})
     public void onClickButton(Button button) {
         switch (button.getId()) {
             case R.id.btn_zip:
                 rxZip();
+                break;
+            case R.id.btn_zip_more:
+                rxZipMore();
                 break;
             case R.id.btn_zip_explain:
                 tvResult.setText(mRxJavaExplain);
@@ -116,5 +123,28 @@ public class ZipOperatorActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+
+    private void rxZipMore() {
+        Observable.zip(Observable.just(1, 8, 7), Observable.just(2, 5),
+                Observable.just(3, 6), Observable.just(4, 9, 0), new Function4<Integer, Integer, Integer, Integer, Integer>() {
+                    @Override
+                    public Integer apply(Integer integer, Integer integer2, Integer integer3, Integer integer4) {
+                        return integer < integer2 ? integer3 : integer4;
+                    }
+                }).subscribe(new Consumer<Integer>() {
+
+            @Override
+            public void accept(Integer integer) {
+                Log.e(TAG, "onNext--> " + integer);
+            }
+
+        }, new Consumer<Throwable>() {
+
+            @Override
+            public void accept(Throwable throwable) {
+                Log.e(TAG, "onError--> " + throwable.getMessage());
+            }
+        });
     }
 }

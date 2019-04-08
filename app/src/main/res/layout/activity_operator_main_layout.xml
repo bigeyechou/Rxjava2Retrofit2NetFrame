@@ -11,10 +11,16 @@
         android:layout_height="wrap_content"
         android:text="map操作符"/>
     <Button
-        android:id="@+id/btn_zip"
+        android:id="@+id/btn_flatmap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/btn_map"
+        android:text="flatMap操作符"/>
+    <Button
+        android:id="@+id/btn_zip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/btn_flatmap"
         android:text="zip操作符"/>
 
 

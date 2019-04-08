@@ -31,7 +31,7 @@ public class RxOperatorMainActivity extends AppCompatActivity {
     }
 
 
-    @OnClick({R.id.btn_map,R.id.btn_zip})
+    @OnClick({R.id.btn_map,R.id.btn_zip,R.id.btn_flatmap})
     public void onClickButton(Button button) {
         switch (button.getId()) {
             case R.id.btn_zip:
@@ -39,6 +39,9 @@ public class RxOperatorMainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_map:
                 startActivity(new Intent(RxOperatorMainActivity.this,MapOperatorActivity.class));
+                break;
+            case R.id.btn_flatmap:
+                startActivity(new Intent(RxOperatorMainActivity.this,FlatMapOperatorActivity.class));
                 break;
             default:
                 break;

@@ -40,7 +40,7 @@ import okhttp3.Response;
 import okhttp3.ResponseBody;
 
 /**
- * RxJava Map操作符
+ * RxJava Map操作符(变换操作符)
  */
 public class MapOperatorActivity extends AppCompatActivity {
     private static String TAG = "MapOperatorActivity";
@@ -159,7 +159,7 @@ public class MapOperatorActivity extends AppCompatActivity {
      * BackpressureStrategy状态：
      * MISSING:OnNext发出的事件不做任何缓冲或删除操作
      * ERROR:抛出一个MissingBackpressureException异常，以防下游无法跟上
-     * BUFFER:缓冲所有next值，直到下游使用它
+     * BUFFER:缓冲所有next值，直到下游使用它,容易oom
      * DROP:如果下游无法跟上，则会下跌最近的onNext值
      * LATEST:只保留最新的onNext值，如果下游无法跟上，则覆盖以前的任何值
      */

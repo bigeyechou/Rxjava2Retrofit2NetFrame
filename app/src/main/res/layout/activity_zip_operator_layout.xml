@@ -21,6 +21,15 @@
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_zip_explain" />
 
+    <Button
+        android:id="@+id/btn_zip_more"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="zip操作符合并多个"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_zip" />
+
     <TextView
         android:id="@+id/tv_result"
         android:layout_width="0dp"
@@ -28,6 +37,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_zip" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_zip_more" />
 
 </android.support.constraint.ConstraintLayout>
