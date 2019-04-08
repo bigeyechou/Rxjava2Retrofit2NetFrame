@@ -155,6 +155,13 @@ public class MapOperatorActivity extends AppCompatActivity {
      * {当上下游在不同的线程中，通过Observable发射，处理，响应数据流时，如果上游发射数据的速度快于下游接收处理数据的速度，
      * 这样对于那些没来得及处理的数据就会造成积压，这些数据既不会丢失，也不会被垃圾回收机制回收，而是存放在一个异步缓存池中，
      * 如果缓存池中的数据一直得不到处理，越积越多，最后就会造成内存溢出，这便是响应式编程中的背压（backpressure）问题。}
+     * <p>
+     * BackpressureStrategy状态：
+     * MISSING:OnNext发出的事件不做任何缓冲或删除操作
+     * ERROR:抛出一个MissingBackpressureException异常，以防下游无法跟上
+     * BUFFER:缓冲所有next值，直到下游使用它
+     * DROP:如果下游无法跟上，则会下跌最近的onNext值
+     * LATEST:只保留最新的onNext值，如果下游无法跟上，则覆盖以前的任何值
      */
     private void rxMapNoRetrofitBackPressure() {
         Flowable.create(new FlowableOnSubscribe<Response>() {
@@ -183,7 +190,7 @@ public class MapOperatorActivity extends AppCompatActivity {
                     }
                 })
                 .subscribeOn(Schedulers.io())//subscribeOn顾名思义，改变了上游的subscribe所在的线程，而在 Flowable 中不仅如此,还同样的改变了Subscription.request所在的线程
-                                            // 调度上游的Flowable的subscribe方法，可能会调度上游Subscription的request 方法，运行在io线程中。
+                // 调度上游的Flowable的subscribe方法，可能会调度上游Subscription的request 方法，运行在io线程中。
                 .unsubscribeOn(Schedulers.io())//调度上游的Subscription的cancel方法，运行在io线程中。
                 .observeOn(AndroidSchedulers.mainThread())//调度下游Subscriber 的 onNext / onError / onComplete 方法，运行在主线程中。
                 .subscribe(new Subscriber<WeatherResponseBean>() {
