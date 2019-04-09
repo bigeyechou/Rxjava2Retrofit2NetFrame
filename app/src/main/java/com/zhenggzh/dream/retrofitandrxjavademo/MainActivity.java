@@ -68,7 +68,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onSuccess(String result) {
                 //成功
-                Toast.makeText(MainActivity.this, "请求成功：", Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "请求成功~", Toast.LENGTH_SHORT).show();
                 WeatherResponseBean weather = GsonUtils.fromJson(result,
                         WeatherResponseBean.class);
                 tvCityWather.setText(weather.toString());

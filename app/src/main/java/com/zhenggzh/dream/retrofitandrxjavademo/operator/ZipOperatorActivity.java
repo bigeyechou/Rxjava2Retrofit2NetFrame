@@ -137,6 +137,7 @@ public class ZipOperatorActivity extends AppCompatActivity {
             @Override
             public void accept(Integer integer) {
                 Log.e(TAG, "onNext--> " + integer);
+                tvResult.setText("zip合并成功");
             }
 
         }, new Consumer<Throwable>() {
@@ -144,6 +145,7 @@ public class ZipOperatorActivity extends AppCompatActivity {
             @Override
             public void accept(Throwable throwable) {
                 Log.e(TAG, "onError--> " + throwable.getMessage());
+                tvResult.setText("zip合并失败");
             }
         });
     }
