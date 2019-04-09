@@ -21,7 +21,7 @@
     
 ### 应用实例
     https://github.com/bigeyechou/ChouMediaPlayer 请参考我git上的视频播放项目，集成了此网络请求框架（network），仅供下载参考。
-![img](https://s27.aconvert.com/convert/p3r68-cdx67/uxjz4-hkrdt.gif)
+![img](https://upload-images.jianshu.io/upload_images/1427878-91fb21d8bdf8dd2d.gif?imageMogr2/auto-orient/strip)
 ### 版本
     【1.1】 更新了RxJava和RxAndroid的版本（2.0+），语法区别和一些操作符有做改变。
     【1.2】 新增示例接口；新增请求方式@Query、@QueryMap、@Body；新增使用指引文档
