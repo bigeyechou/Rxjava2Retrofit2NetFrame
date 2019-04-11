@@ -54,6 +54,7 @@ public class OnSuccessAndFaultSub extends DisposableObserver<ResponseBody>
         this.mOnSuccessAndFaultListener = mOnSuccessAndFaultListener;
         this.context = context;
         progressDialog = new ProgressDialog(context);
+        progressDialog.setMessage("正在加载中请稍后~");
     }
 
 

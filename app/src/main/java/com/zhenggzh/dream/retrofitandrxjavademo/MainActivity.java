@@ -9,7 +9,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.zhenggzh.dream.retrofitandrxjavademo.bean.WeatherResponseBean;
-import com.zhenggzh.dream.retrofitandrxjavademo.netsubscribe.MovieSubscribe;
+import com.zhenggzh.dream.retrofitandrxjavademo.netsubscribe.WeatherSubscribe;
 import com.zhenggzh.dream.retrofitandrxjavademo.netutils.OnSuccessAndFaultListener;
 import com.zhenggzh.dream.retrofitandrxjavademo.netutils.OnSuccessAndFaultSub;
 import com.zhenggzh.dream.retrofitandrxjavademo.operator.RxOperatorMainActivity;
@@ -18,6 +18,8 @@ import com.zhenggzh.dream.retrofitandrxjavademo.utils.GsonUtils;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import io.reactivex.observers.DisposableObserver;
+import okhttp3.ResponseBody;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -49,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     public void onClickButton(Button button) {
         switch (button.getId()) {
             case R.id.btn_getDate:
-                getDouBanData();
+                getWeatherData();
                 break;
             case R.id.btn_Operator:
                 startActivity(new Intent(MainActivity.this,RxOperatorMainActivity.class));
@@ -61,10 +63,12 @@ public class MainActivity extends AppCompatActivity {
 
 
     /**
-     * 请求数据
+     * 请求天气预报的数据
+     * OnSuccessAndFaultSub 我只是加了错误处理和请求的loading，可以自己根据项目的业务修改
+     * new OnSuccessAndFaultSub（第一个参数:成功or失败的回调，第二个参数:上下文，可以不填，控制dialog的）
      */
-    private void getDouBanData() {
-        MovieSubscribe.getWeatherDataForBody(mCityName, new OnSuccessAndFaultSub(new OnSuccessAndFaultListener() {
+    private void getWeatherData() {
+        WeatherSubscribe.getWeatherDataForBody(mCityName, new OnSuccessAndFaultSub(new OnSuccessAndFaultListener() {
             @Override
             public void onSuccess(String result) {
                 //成功
@@ -79,7 +83,7 @@ public class MainActivity extends AppCompatActivity {
                 //失败
                 Toast.makeText(MainActivity.this, "请求失败：" + errorMsg, Toast.LENGTH_SHORT).show();
             }
-        }));
+        },MainActivity.this));
     }
 
 }
