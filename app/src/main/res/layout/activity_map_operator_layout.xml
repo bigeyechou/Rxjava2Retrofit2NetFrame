@@ -5,15 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_map_explain"
         android:layout_width="0dp"
         android:layout_height="44dp"
         android:text="map操作符概念"
+        app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent" />
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_map_no_retrofit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -23,7 +24,7 @@
         app:layout_constraintRight_toLeftOf="@+id/btn_map_no_retrofit_backpressure"
         app:layout_constraintTop_toBottomOf="@+id/btn_map_explain" />
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_map_no_retrofit_backpressure"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -33,7 +34,7 @@
         app:layout_constraintRight_toLeftOf="@+id/btn_map"
         app:layout_constraintTop_toBottomOf="@+id/btn_map_explain" />
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_map"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -44,7 +45,7 @@
         app:layout_constraintTop_toBottomOf="@+id/btn_map_explain" />
 
 
-    <TextView
+    <android.support.v7.widget.AppCompatTextView
         android:id="@+id/tv_result"
         android:layout_width="0dp"
         android:layout_height="0dp"

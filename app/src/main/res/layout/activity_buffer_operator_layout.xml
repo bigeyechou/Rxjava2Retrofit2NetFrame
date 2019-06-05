@@ -1,35 +1,31 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btn_zip_explain"
+        android:id="@+id/btn_buffer_explain"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="zip操作符概念"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent" />
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="buffer操作符概念"/>
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btn_zip"
+        android:id="@+id/btn_buffer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:text="zip操作符请求数据"
+        app:layout_constraintTop_toBottomOf="@+id/btn_buffer_explain"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_zip_explain" />
+        android:text="buffer操作符1"/>
 
-    <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btn_zip_more"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:text="zip操作符合并多个"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_zip" />
+
+
 
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/tv_result"
@@ -38,6 +34,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_zip_more" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_buffer"/>
 
 </android.support.constraint.ConstraintLayout>

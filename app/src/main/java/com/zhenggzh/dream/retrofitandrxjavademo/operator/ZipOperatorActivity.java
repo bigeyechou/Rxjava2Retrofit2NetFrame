@@ -4,6 +4,8 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
@@ -38,7 +40,7 @@ import okhttp3.ResponseBody;
  */
 public class ZipOperatorActivity extends AppCompatActivity {
 
-    private static String TAG = "RxJavaMainActivity";
+    private static String TAG = "ZipOperatorActivity";
     private final String mRxJavaExplain = "zip操作符:\n" +
             "按照自己的规则发射与发射数据项最少的相同的数据。\n" +
             "合并多个被观察者(Observable)的数据流然后发送合并后的数据流。\n" +
@@ -46,13 +48,13 @@ public class ZipOperatorActivity extends AppCompatActivity {
             "应用实例：多用于合并多个网络请求成一个，实现多个接口数据共同更新UI，如List插入头数据、多个接口里面的数据合并成一个你想要的数据。";
 
     @Bind(R.id.btn_zip_explain)
-    Button btnZipExplain;
+    AppCompatButton btnZipExplain;
     @Bind(R.id.btn_zip)
-    Button btnZip;
+    AppCompatButton btnZip;
     @Bind(R.id.btn_zip_more)
-    Button btnZipMore;
+    AppCompatButton btnZipMore;
     @Bind(R.id.tv_result)
-    TextView tvResult;
+    AppCompatTextView tvResult;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -64,7 +66,7 @@ public class ZipOperatorActivity extends AppCompatActivity {
     }
 
     @OnClick({R.id.btn_zip_explain, R.id.btn_zip, R.id.btn_zip_more})
-    public void onClickButton(Button button) {
+    public void onClickButton(AppCompatButton button) {
         switch (button.getId()) {
             case R.id.btn_zip:
                 rxZip();

@@ -5,29 +5,32 @@
     android:layout_height="match_parent">
 
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_create"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:text="create操作符" />
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_just"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toRightOf="@+id/btn_create"
+        app:layout_constraintTop_toTopOf="parent"
         android:text="just操作符" />
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_fromarray"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintLeft_toRightOf="@+id/btn_just"
         app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
         android:text="fromArray操作符" />
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_fromiterable"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -35,7 +38,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:text="fromIterable操作符" />
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_defer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -43,7 +46,7 @@
         app:layout_constraintLeft_toRightOf="@+id/btn_fromiterable"
         android:text="defer操作符" />
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_timer"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -52,7 +55,7 @@
         app:layout_constraintRight_toRightOf="parent"
         android:text="timer操作符" />
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_interval"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -60,7 +63,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         android:text="interval操作符" />
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_intervalrange"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -68,7 +71,7 @@
         app:layout_constraintLeft_toRightOf="@+id/btn_interval"
         android:text="range操作符" />
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_range"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
@@ -77,7 +80,7 @@
         app:layout_constraintRight_toRightOf="parent"
         android:text="intervalRange操作符" />
 
-    <TextView
+    <android.support.v7.widget.AppCompatTextView
         android:id="@+id/tv_result"
         android:layout_width="0dp"
         android:layout_height="0dp"

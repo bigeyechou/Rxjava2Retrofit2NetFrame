@@ -4,6 +4,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatButton;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
@@ -50,15 +51,15 @@ public class MapOperatorActivity extends AppCompatActivity {
             "应用实例：网络请求的Response转换成相应的Bean";
 
     @Bind(R.id.btn_map_explain)
-    Button btnMapExplain;
+    AppCompatButton btnMapExplain;
     @Bind(R.id.btn_map)
-    Button btnMap;
+    AppCompatButton btnMap;
     @Bind(R.id.tv_result)
-    TextView tvResult;
+    AppCompatButton tvResult;
     @Bind(R.id.btn_map_no_retrofit_backpressure)
-    Button btnMapNoRetrofitBackPressure;
+    AppCompatButton btnMapNoRetrofitBackPressure;
     @Bind(R.id.btn_map_no_retrofit)
-    Button btnMapNoRetrofit;
+    AppCompatButton btnMapNoRetrofit;
 
 
     @Override
@@ -70,7 +71,7 @@ public class MapOperatorActivity extends AppCompatActivity {
     }
 
     @OnClick({R.id.btn_map_explain, R.id.btn_map, R.id.btn_map_no_retrofit_backpressure, R.id.btn_map_no_retrofit})
-    public void onClickButton(Button button) {
+    public void onClickButton(AppCompatButton button) {
         switch (button.getId()) {
             case R.id.btn_map_explain:
                 tvResult.setText(mRxJavaExplain);

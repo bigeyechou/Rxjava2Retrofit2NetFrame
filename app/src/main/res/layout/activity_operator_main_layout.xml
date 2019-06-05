@@ -5,29 +5,40 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <Button
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_create_operator"
         android:layout_width="match_parent"
-        android:layout_height= "wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toTopOf="parent"
         android:text="创建操作符集合"/>
-    <Button
+
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_map"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/btn_create_operator"
-        android:text="map操作符"/>
-    <Button
+        android:text="变换操作符：map"/>
+
+    <android.support.v7.widget.AppCompatButton
         android:id="@+id/btn_flatmap"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/btn_map"
-        android:text="flatMap操作符"/>
-    <Button
-        android:id="@+id/btn_zip"
+        android:text="变换操作符：flatMap"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_buffer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toBottomOf="@+id/btn_flatmap"
-        android:text="zip操作符"/>
+        android:text="变换操作符：buffer"/>
 
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_zip"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/btn_buffer"
+        android:text="过滤操作符：zip"/>
 
 </android.support.constraint.ConstraintLayout>

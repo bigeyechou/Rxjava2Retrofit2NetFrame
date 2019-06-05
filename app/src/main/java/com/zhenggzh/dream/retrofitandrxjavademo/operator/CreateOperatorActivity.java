@@ -3,6 +3,8 @@ package com.zhenggzh.dream.retrofitandrxjavademo.operator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
 import android.util.TimeUtils;
 import android.widget.Button;
@@ -37,7 +39,7 @@ public class CreateOperatorActivity extends AppCompatActivity {
     private String mRxJavaExplain = "点击相应操作符显示相关解释，测试数据请看log日志~\n";
 
     @Bind(R.id.tv_result)
-    TextView tvResult;
+    AppCompatTextView tvResult;
     Observable observable;
 
     /**
@@ -56,7 +58,7 @@ public class CreateOperatorActivity extends AppCompatActivity {
 
 
     @OnClick({R.id.btn_create, R.id.btn_just, R.id.btn_fromarray, R.id.btn_fromiterable, R.id.btn_defer, R.id.btn_timer, R.id.btn_interval,R.id.btn_intervalrange, R.id.btn_range})
-    public void onClickButton(Button button) {
+    public void onClickButton(AppCompatButton button) {
         switch (button.getId()) {
             case R.id.btn_create:
                 rxCreate();
@@ -83,6 +85,9 @@ public class CreateOperatorActivity extends AppCompatActivity {
                 rxIntervalRange();
                 break;
             case R.id.btn_range:
+                rxRange();
+                break;
+            case R.id.btn_buffer:
                 rxRange();
                 break;
             default:

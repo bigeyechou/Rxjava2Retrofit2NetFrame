@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatButton;
 import android.widget.Button;
 
 import com.zhenggzh.dream.retrofitandrxjavademo.R;
@@ -35,8 +36,8 @@ public class RxOperatorMainActivity extends AppCompatActivity {
      * 条件操作符：contains{};exists{};isEmpty{}...
      */
 
-    @OnClick({R.id.btn_map, R.id.btn_zip, R.id.btn_flatmap, R.id.btn_create_operator})
-    public void onClickButton(Button button) {
+    @OnClick({R.id.btn_map, R.id.btn_zip, R.id.btn_flatmap, R.id.btn_buffer, R.id.btn_create_operator})
+    public void onClickButton(AppCompatButton button) {
         switch (button.getId()) {
             case R.id.btn_create_operator:
                 startActivity(new Intent(RxOperatorMainActivity.this, CreateOperatorActivity.class));
@@ -46,6 +47,9 @@ public class RxOperatorMainActivity extends AppCompatActivity {
                 break;
             case R.id.btn_flatmap://包含flatMap和concatMap
                 startActivity(new Intent(RxOperatorMainActivity.this, FlatMapOperatorActivity.class));
+                break;
+            case R.id.btn_buffer:
+                startActivity(new Intent(RxOperatorMainActivity.this, BufferOperatorActivity.class));
                 break;
             case R.id.btn_zip:
                 startActivity(new Intent(RxOperatorMainActivity.this, ZipOperatorActivity.class));

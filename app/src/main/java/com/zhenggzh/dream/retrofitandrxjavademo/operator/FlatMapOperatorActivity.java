@@ -3,6 +3,8 @@ package com.zhenggzh.dream.retrofitandrxjavademo.operator;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
@@ -43,15 +45,15 @@ public class FlatMapOperatorActivity extends AppCompatActivity {
             "flatMap 并不能保证事件的顺序；可以保证顺序的操作符concatMap，用法相当";
 
     @Bind(R.id.btn_flatmap_explain)
-    Button btnFlatmapExplain;
+    AppCompatButton btnFlatmapExplain;
     @Bind(R.id.btn_flatmap1)
-    Button btnFlatmap1;
+    AppCompatButton btnFlatmap1;
     @Bind(R.id.btn_flatmap2)
-    Button btnFlatmap2;
+    AppCompatButton btnFlatmap2;
     @Bind(R.id.btn_concatmap)
-    Button btnConcatMap;
+    AppCompatButton btnConcatMap;
     @Bind(R.id.tv_result)
-    TextView tvResult;
+    AppCompatTextView tvResult;
 
     private List<String> resultString = new ArrayList<>();
 
@@ -65,7 +67,7 @@ public class FlatMapOperatorActivity extends AppCompatActivity {
 
 
     @OnClick({R.id.btn_flatmap_explain, R.id.btn_flatmap1, R.id.btn_flatmap2,R.id.btn_concatmap})
-    public void onClickButton(Button button) {
+    public void onClickButton(AppCompatButton button) {
         switch (button.getId()) {
             case R.id.btn_flatmap_explain:
                 tvResult.setText(mRxJavaExplain);
