@@ -4,7 +4,7 @@ import android.content.Context;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 
-import com.zhenggzh.dream.retrofitandrxjavademo.app.BigEyeApplication;
+import com.zhenggzh.dream.retrofitandrxjavademo.app.BaseApplication;
 
 
 /**
@@ -20,7 +20,7 @@ public class NetUtil {
      */
     public static boolean isNetworkConnected() {
 
-        ConnectivityManager mConnectivityManager = (ConnectivityManager) BigEyeApplication.appContext
+        ConnectivityManager mConnectivityManager = (ConnectivityManager) BaseApplication.appContext
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         NetworkInfo mNetworkInfo = mConnectivityManager
                 .getActiveNetworkInfo();
@@ -39,7 +39,7 @@ public class NetUtil {
      */
     public static boolean isWifiConnected(Context context) {
         if (context != null) {
-            ConnectivityManager mConnectivityManager = (ConnectivityManager) BigEyeApplication.appContext
+            ConnectivityManager mConnectivityManager = (ConnectivityManager) BaseApplication.appContext
                     .getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo mWiFiNetworkInfo = mConnectivityManager
                     .getNetworkInfo(ConnectivityManager.TYPE_WIFI);
@@ -52,7 +52,7 @@ public class NetUtil {
 
 
     public static boolean isWiFiActive() {
-        ConnectivityManager connectivity = (ConnectivityManager) BigEyeApplication.appContext
+        ConnectivityManager connectivity = (ConnectivityManager) BaseApplication.appContext
                 .getSystemService(Context.CONNECTIVITY_SERVICE);
         if (connectivity != null) {
             NetworkInfo[] info = connectivity.getAllNetworkInfo();
@@ -73,8 +73,8 @@ public class NetUtil {
      * @return
      */
     public static int getConnectedType() {
-        if (BigEyeApplication.appContext != null) {
-            ConnectivityManager mConnectivityManager = (ConnectivityManager) BigEyeApplication.appContext
+        if (BaseApplication.appContext != null) {
+            ConnectivityManager mConnectivityManager = (ConnectivityManager) BaseApplication.appContext
                     .getSystemService(Context.CONNECTIVITY_SERVICE);
             NetworkInfo mNetworkInfo = mConnectivityManager.getActiveNetworkInfo();
             if (mNetworkInfo != null && mNetworkInfo.isAvailable()) {

@@ -14,6 +14,12 @@
         android:layout_height="wrap_content"
         android:text="前往了解更多操作符" />
 
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_download"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="下载操作" />
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">

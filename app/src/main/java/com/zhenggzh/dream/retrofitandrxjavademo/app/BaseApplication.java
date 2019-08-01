@@ -10,11 +10,11 @@ import java.util.ArrayList;
  * Created by 眼神 on 2018/3/27.
  */
 
-public class BigEyeApplication extends Application {
+public class BaseApplication extends Application {
 
     public static Context appContext;
     public static ArrayList<Activity> allActivities = new ArrayList<Activity>();
-    public static BigEyeApplication app;
+    public static BaseApplication app;
 
     @Override
     public void onCreate() {
@@ -27,7 +27,7 @@ public class BigEyeApplication extends Application {
         return appContext;
     }
 
-    public static BigEyeApplication getApp(){
+    public static BaseApplication getApp(){
         return app;
     }
 

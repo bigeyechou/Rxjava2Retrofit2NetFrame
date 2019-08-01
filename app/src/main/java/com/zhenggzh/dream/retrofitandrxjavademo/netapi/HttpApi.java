@@ -3,6 +3,7 @@ package com.zhenggzh.dream.retrofitandrxjavademo.netapi;
 import com.zhenggzh.dream.retrofitandrxjavademo.bean.BaseRequestBean;
 import com.zhenggzh.dream.retrofitandrxjavademo.bean.WeatherRequestBean;
 
+import com.zhenggzh.dream.retrofitandrxjavademo.download.DownloadResponseBody;
 import io.reactivex.Observable;
 
 import java.util.Map;
@@ -41,4 +42,8 @@ public interface HttpApi {
     @GET()
     @Streaming//使用Streaming 方式 Retrofit 不会一次性将ResponseBody 读取进入内存，否则文件很多容易OOM
     Call<ResponseBody> downloadFile(@Url String fileUrl);//返回值使用 ResponseBody 之后会对ResponseBody 进行读取
+
+    @GET()
+    @Streaming
+    Observable<ResponseBody> downloadFileWithUrlSync(@Url String fileUrl);
 }

@@ -3,7 +3,7 @@ package com.zhenggzh.dream.retrofitandrxjavademo.netutils;
 
 import com.orhanobut.logger.Logger;
 import com.zhenggzh.dream.retrofitandrxjavademo.app.BaseConstant;
-import com.zhenggzh.dream.retrofitandrxjavademo.app.BigEyeApplication;
+import com.zhenggzh.dream.retrofitandrxjavademo.app.BaseApplication;
 import com.zhenggzh.dream.retrofitandrxjavademo.netapi.HttpApi;
 import com.zhenggzh.dream.retrofitandrxjavademo.netapi.URLConstant;
 
@@ -54,7 +54,7 @@ public class RetrofitFactory {
         /**
          * 设置缓存
          */
-        File cacheFile = new File(BigEyeApplication.appContext.getExternalCacheDir(), CACHE_NAME);
+        File cacheFile = new File(BaseApplication.appContext.getExternalCacheDir(), CACHE_NAME);
         Cache cache = new Cache(cacheFile, 1024 * 1024 * 50);
         Interceptor cacheInterceptor = new Interceptor() {
             @Override
