@@ -20,7 +20,9 @@ import java.io.File;
  */
 public class DownloadActivity extends AppCompatActivity implements View.OnClickListener {
 
-  @Bind(R.id.btn_download_app) AppCompatButton btnDownloadApp;
+  @Bind(R.id.btn_download1) AppCompatButton btnDownload1;
+
+  @Bind(R.id.btn_download2) AppCompatButton btnDownload2;
 
   @Override protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -28,11 +30,13 @@ public class DownloadActivity extends AppCompatActivity implements View.OnClickL
     ButterKnife.bind(this);
   }
 
-  @OnClick({ R.id.btn_download_app })
+  @OnClick({ R.id.btn_download1,R.id.btn_download2 })
   @Override public void onClick(View v) {
     switch (v.getId()) {
-      case R.id.btn_download_app:
+      case R.id.btn_download1:
         download("下载地址xxx");
+        break;
+      case R.id.btn_download2:
         break;
     }
   }

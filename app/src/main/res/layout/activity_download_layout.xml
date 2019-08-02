@@ -6,12 +6,21 @@
     android:layout_height="match_parent">
 
     <android.support.v7.widget.AppCompatButton
-        android:id="@+id/btn_download_app"
+        android:id="@+id/btn_download1"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        android:text="下载APP"/>
+        android:text="普通下载APP"/>
+
+    <android.support.v7.widget.AppCompatButton
+        android:id="@+id/btn_download2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/btn_download1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:text="断点续传下载APP"/>
 
 </android.support.constraint.ConstraintLayout>
