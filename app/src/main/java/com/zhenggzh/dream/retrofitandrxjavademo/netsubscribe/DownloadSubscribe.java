@@ -24,18 +24,10 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class DownloadSubscribe {
 
-
-  public static void downloadApp(String downUrl, FileDownloadObserver<File> subscriber) {
-    // Observable<ResponseBody> observable =  RetrofitFactory.getInstance().getHttpApi().downloadFileWithUrlSync(downUrl);
-    // RetrofitFactory.getInstance().toSubscribe(observable, subscriber);
-  }
-
   /**
-   * 下载单文件，该方法不支持断点下载
-   *
-   * @param url                  文件地址
-   * @param destDir              存储文件夹
-   * @param fileName             存储文件名
+   * @param url 文件地址
+   * @param destDir 存储文件夹
+   * @param fileName 存储文件名
    * @param fileDownLoadObserver 监听回调
    */
   public static void downloadFile(@NonNull String url, final String destDir, final String fileName, final FileDownloadObserver<File> fileDownLoadObserver) {

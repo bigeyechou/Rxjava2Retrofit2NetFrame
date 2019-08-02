@@ -32,7 +32,7 @@ public class DownloadActivity extends AppCompatActivity implements View.OnClickL
   @Override public void onClick(View v) {
     switch (v.getId()) {
       case R.id.btn_download_app:
-        download("http://imtt.dd.qq.com/16891/7C7BB50B68B684A36339AF1F615E2848.apk");
+        download("下载地址xxx");
         break;
     }
   }
@@ -48,7 +48,8 @@ public class DownloadActivity extends AppCompatActivity implements View.OnClickL
 
     final File file = new File(getApkPath(),"rxjava.apk");
 
-    DownloadSubscribe.downloadFile(fileUrl,file.getPath(),file.getName(),new FileDownloadObserver<File>() {
+
+    DownloadSubscribe.downloadFile(fileUrl, file.getPath(), file.getName(), new FileDownloadObserver<File>() {
       @Override
       public void onDownLoadSuccess(File file) {
         Log.e("==============>","下载成功");
