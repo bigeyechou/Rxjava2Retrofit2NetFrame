@@ -1,9 +1,9 @@
 ### 如果帮到您了能不能给个赞，赞多的话我会抽时间继续给大家更新支持的~
+### kotlin版本链接：https://github.com/bigeyechou/AndroidKotlin
 ### 项目介绍
     NetWorkFrame：Android网络请求框架
     down下来一定要配上自己的接口名，URLConstant和HttpApi的post/get()中！！！！！
     有相关操作符的解释，演示便于大家更快的了解使用强大的操作符~
-    转换为kotlin的版本：https://github.com/bigeyechou/AndroidKotlin
 
 ### 软件架构
     基于Retrofit+Rxjava+Okhttp封装的网络请求框架
