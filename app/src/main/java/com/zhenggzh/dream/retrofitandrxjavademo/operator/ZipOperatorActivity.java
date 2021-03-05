@@ -110,8 +110,10 @@ public class ZipOperatorActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(List<WeatherResponseBean> weatherResponseBeans) {
-                        Log.e(TAG, "zip合并后：" + weatherResponseBeans.toString());
-                        tvResult.setText("zip合并后：" + weatherResponseBeans.toString());
+                        if (weatherResponseBeans !=null){
+                            Log.e(TAG, "zip合并后：" + weatherResponseBeans.toString());
+                            tvResult.setText("zip合并后：" + weatherResponseBeans.toString());
+                        }
                     }
 
                     @Override

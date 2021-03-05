@@ -202,36 +202,5 @@ public class WeatherResponseBean {
         public void setWin(List<String> win) {
             this.win = win;
         }
-
-        @Override
-        public String toString() {
-            return "DataBean{" +
-                    "day='" + day + '\'' +
-                    ", date='" + date + '\'' +
-                    ", week='" + week + '\'' +
-                    ", wea='" + wea + '\'' +
-                    ", wea_img='" + wea_img + '\'' +
-                    ", air=" + air +
-                    ", humidity=" + humidity +
-                    ", air_level='" + air_level + '\'' +
-                    ", air_tips='" + air_tips + '\'' +
-                    ", tem1='" + tem1 + '\'' +
-                    ", tem2='" + tem2 + '\'' +
-                    ", tem='" + tem + '\'' +
-                    ", win_speed='" + win_speed + '\'' +
-                    ", win=" + win +
-                    '}';
-        }
-    }
-
-    @Override
-    public String toString() {
-        return "WeatherResponseBean{" +
-                "cityid='" + cityid + '\'' +
-                ", update_time='" + update_time + '\'' +
-                ", city='" + city + '\'' +
-                ", country='" + country + '\'' +
-                ", data=" + data.toString() +
-                '}';
     }
 }

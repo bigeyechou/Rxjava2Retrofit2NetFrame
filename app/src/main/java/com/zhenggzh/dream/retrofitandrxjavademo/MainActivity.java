@@ -88,7 +88,9 @@ public class MainActivity extends AppCompatActivity {
         Toast.makeText(MainActivity.this, "请求成功~", Toast.LENGTH_SHORT).show();
         WeatherResponseBean weather = GsonUtils.fromJson(result,
             WeatherResponseBean.class);
-        tvCityWather.setText(weather.toString());
+        if (weather!=null){
+          tvCityWather.setText(weather.toString());
+        }
       }
 
       @Override

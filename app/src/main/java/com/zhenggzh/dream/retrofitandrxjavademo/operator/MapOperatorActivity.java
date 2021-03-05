@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
+import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
@@ -55,7 +56,7 @@ public class MapOperatorActivity extends AppCompatActivity {
     @Bind(R.id.btn_map)
     AppCompatButton btnMap;
     @Bind(R.id.tv_result)
-    AppCompatButton tvResult;
+    AppCompatTextView tvResult;
     @Bind(R.id.btn_map_no_retrofit_backpressure)
     AppCompatButton btnMapNoRetrofitBackPressure;
     @Bind(R.id.btn_map_no_retrofit)
