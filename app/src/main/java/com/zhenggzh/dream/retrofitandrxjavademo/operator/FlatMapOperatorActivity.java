@@ -6,8 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.zhenggzh.dream.retrofitandrxjavademo.R;
 import com.zhenggzh.dream.retrofitandrxjavademo.bean.WeatherResponseBean;
@@ -89,7 +87,7 @@ public class FlatMapOperatorActivity extends AppCompatActivity {
 
     private void rxFlatMap1() {
         resultString.clear();
-        final Observable<ResponseBody> observable = RetrofitFactory.getInstance().getHttpApi().getWeatherDataForQuery("v1", "北京");
+        final Observable<ResponseBody> observable = RetrofitFactory.getInstance().getHttpService().getWeatherDataForQuery("v1", "北京");
         observable.flatMap(new Function<ResponseBody, ObservableSource<WeatherResponseBean.DataBean>>() {
             @Override
             public ObservableSource<WeatherResponseBean.DataBean> apply(ResponseBody responseBody) throws Exception {

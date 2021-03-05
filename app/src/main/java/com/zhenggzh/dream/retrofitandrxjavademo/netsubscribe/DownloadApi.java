@@ -1,16 +1,12 @@
 package com.zhenggzh.dream.retrofitandrxjavademo.netsubscribe;
 
-import com.zhenggzh.dream.retrofitandrxjavademo.download.DownloadResponseBody;
 import com.zhenggzh.dream.retrofitandrxjavademo.download.FileDownloadObserver;
-import com.zhenggzh.dream.retrofitandrxjavademo.netapi.HttpApi;
+import com.zhenggzh.dream.retrofitandrxjavademo.netapi.HttpService;
 import com.zhenggzh.dream.retrofitandrxjavademo.netapi.URLConstant;
-import com.zhenggzh.dream.retrofitandrxjavademo.netutils.OnSuccessAndFaultSub;
-import com.zhenggzh.dream.retrofitandrxjavademo.netutils.RetrofitFactory;
-import io.reactivex.Observable;
+
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.annotations.NonNull;
 import io.reactivex.functions.Function;
-import io.reactivex.observers.DisposableObserver;
 import io.reactivex.schedulers.Schedulers;
 import java.io.File;
 import okhttp3.OkHttpClient;
@@ -22,7 +18,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 /**
  * 下载文件相关
  */
-public class DownloadSubscribe {
+public class DownloadApi {
 
   /**
    * @param url 文件地址
@@ -38,7 +34,7 @@ public class DownloadSubscribe {
         .addConverterFactory(GsonConverterFactory.create())
         .build();
     retrofit
-        .create(HttpApi.class)
+        .create(HttpService.class)
         .downloadFileWithUrlSync(url)
         .subscribeOn(Schedulers.io())//subscribeOn和ObserOn必须在io线程，如果在主线程会出错
         .observeOn(Schedulers.io())

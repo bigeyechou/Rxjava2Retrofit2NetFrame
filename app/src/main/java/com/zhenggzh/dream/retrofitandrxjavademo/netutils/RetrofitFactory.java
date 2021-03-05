@@ -4,7 +4,7 @@ package com.zhenggzh.dream.retrofitandrxjavademo.netutils;
 import com.orhanobut.logger.Logger;
 import com.zhenggzh.dream.retrofitandrxjavademo.app.BaseConstant;
 import com.zhenggzh.dream.retrofitandrxjavademo.app.BaseApplication;
-import com.zhenggzh.dream.retrofitandrxjavademo.netapi.HttpApi;
+import com.zhenggzh.dream.retrofitandrxjavademo.netapi.HttpService;
 import com.zhenggzh.dream.retrofitandrxjavademo.netapi.URLConstant;
 
 import io.reactivex.Observable;
@@ -40,7 +40,7 @@ public class RetrofitFactory {
     private static final int DEFAULT_WRITE_TIMEOUT = 30;
     private static final int DEFAULT_READ_TIMEOUT = 30;
     private Retrofit retrofit;
-    private HttpApi httpApi;
+    private HttpService httpService;
     /**
      * 请求失败重连次数
      */
@@ -137,7 +137,7 @@ public class RetrofitFactory {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(BASE_URL)
                 .build();
-        httpApi = retrofit.create(HttpApi.class);
+        httpService = retrofit.create(HttpService.class);
     }
 
     //在访问HttpMethods时创建单例
@@ -167,7 +167,7 @@ public class RetrofitFactory {
                 .addCallAdapterFactory(RxJava2CallAdapterFactory.create())
                 .baseUrl(baseUrl)
                 .build();
-        httpApi = retrofit.create(HttpApi.class);
+        httpService = retrofit.create(HttpService.class);
     }
 
     /**
@@ -175,8 +175,8 @@ public class RetrofitFactory {
      *
      * @return
      */
-    public HttpApi getHttpApi() {
-        return httpApi;
+    public HttpService getHttpService() {
+        return httpService;
     }
 
     /**

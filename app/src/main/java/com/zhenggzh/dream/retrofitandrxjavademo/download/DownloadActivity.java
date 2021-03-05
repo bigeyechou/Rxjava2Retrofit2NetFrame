@@ -12,7 +12,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.zhenggzh.dream.retrofitandrxjavademo.R;
-import com.zhenggzh.dream.retrofitandrxjavademo.netsubscribe.DownloadSubscribe;
+import com.zhenggzh.dream.retrofitandrxjavademo.netsubscribe.DownloadApi;
 import java.io.File;
 
 /**
@@ -53,7 +53,7 @@ public class DownloadActivity extends AppCompatActivity implements View.OnClickL
     final File file = new File(getApkPath(),"rxjava.apk");
 
 
-    DownloadSubscribe.downloadFile(fileUrl, file.getPath(), file.getName(), new FileDownloadObserver<File>() {
+    DownloadApi.downloadFile(fileUrl, file.getPath(), file.getName(), new FileDownloadObserver<File>() {
       @Override
       public void onDownLoadSuccess(File file) {
         Log.e("==============>","下载成功");

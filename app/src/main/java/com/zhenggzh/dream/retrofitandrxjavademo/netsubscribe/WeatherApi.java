@@ -16,13 +16,13 @@ import okhttp3.ResponseBody;
  * 建议：把功能模块来分别存放不同的请求方法，比如登录注册类LoginSubscribe、电影类MovieSubscribe、天气类WeatherSubscribe
  */
 
-public class WeatherSubscribe {
+public class WeatherApi {
 
     /**
      * 获取天气数据@Query
      */
     public static void getWeatherDataForQuery(String cityName,DisposableObserver<ResponseBody> subscriber) {
-        Observable<ResponseBody> observable =  RetrofitFactory.getInstance().getHttpApi().getWeatherDataForQuery("v1",cityName);
+        Observable<ResponseBody> observable =  RetrofitFactory.getInstance().getHttpService().getWeatherDataForQuery("v1",cityName);
         RetrofitFactory.getInstance().toSubscribe(observable, subscriber);
     }
 
@@ -33,7 +33,7 @@ public class WeatherSubscribe {
         Map<String,String> map = new HashMap<>();
         map.put("version","v1");
         map.put("city",cityName);
-        Observable<ResponseBody> observable =  RetrofitFactory.getInstance().getHttpApi().getWeatherDataForMap(map);
+        Observable<ResponseBody> observable =  RetrofitFactory.getInstance().getHttpService().getWeatherDataForMap(map);
         RetrofitFactory.getInstance().toSubscribe(observable, subscriber);
     }
 
@@ -45,7 +45,7 @@ public class WeatherSubscribe {
         bean.setCity(cityName);
         BaseRequestBean<WeatherRequestBean> requestBean = new BaseRequestBean<>();
         requestBean.setObj(bean);
-        Observable<ResponseBody> observable =  RetrofitFactory.getInstance().getHttpApi().getWeatherDataForBody(requestBean);
+        Observable<ResponseBody> observable =  RetrofitFactory.getInstance().getHttpService().getWeatherDataForBody(requestBean);
         RetrofitFactory.getInstance().toSubscribe(observable, subscriber);
     }
 }

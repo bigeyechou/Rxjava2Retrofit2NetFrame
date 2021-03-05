@@ -1,23 +1,17 @@
 package com.zhenggzh.dream.retrofitandrxjavademo.operator;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.zhenggzh.dream.retrofitandrxjavademo.R;
 import com.zhenggzh.dream.retrofitandrxjavademo.bean.WeatherResponseBean;
 import com.zhenggzh.dream.retrofitandrxjavademo.netutils.RetrofitFactory;
 import com.zhenggzh.dream.retrofitandrxjavademo.utils.CompressUtils;
 import com.zhenggzh.dream.retrofitandrxjavademo.utils.GsonUtils;
-
-import org.reactivestreams.Subscriber;
-import org.reactivestreams.Subscription;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -85,8 +79,8 @@ public class ZipOperatorActivity extends AppCompatActivity {
      * 把北京和上海的天气WeatherResponseBean 成 List<WeatherResponseBean>
      */
     private void rxZip() {
-        Observable<ResponseBody> observable1 = RetrofitFactory.getInstance().getHttpApi().getWeatherDataForQuery("v1", "北京");
-        Observable<ResponseBody> observable2 = RetrofitFactory.getInstance().getHttpApi().getWeatherDataForQuery("v1", "上海");
+        Observable<ResponseBody> observable1 = RetrofitFactory.getInstance().getHttpService().getWeatherDataForQuery("v1", "北京");
+        Observable<ResponseBody> observable2 = RetrofitFactory.getInstance().getHttpService().getWeatherDataForQuery("v1", "上海");
         Observable.zip(observable1, observable2, new BiFunction<ResponseBody, ResponseBody, List<WeatherResponseBean>>() {
             @Override
             public List<WeatherResponseBean> apply(ResponseBody responseBody1, ResponseBody responseBody2) throws Exception {

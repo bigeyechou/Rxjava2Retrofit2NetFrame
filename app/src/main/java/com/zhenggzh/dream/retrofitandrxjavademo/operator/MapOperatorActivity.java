@@ -7,8 +7,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
 import android.support.v7.widget.AppCompatTextView;
 import android.util.Log;
-import android.widget.Button;
-import android.widget.TextView;
 
 import com.zhenggzh.dream.retrofitandrxjavademo.R;
 import com.zhenggzh.dream.retrofitandrxjavademo.bean.WeatherResponseBean;
@@ -225,7 +223,7 @@ public class MapOperatorActivity extends AppCompatActivity {
      * 不支持背压
      */
     private void rxMap() {
-        Observable<ResponseBody> observable = RetrofitFactory.getInstance().getHttpApi().getWeatherDataForQuery("v1", "北京");
+        Observable<ResponseBody> observable = RetrofitFactory.getInstance().getHttpService().getWeatherDataForQuery("v1", "北京");
         observable.map(new Function<ResponseBody, WeatherResponseBean>() {
             @Override
             public WeatherResponseBean apply(ResponseBody responseBody) throws Exception {

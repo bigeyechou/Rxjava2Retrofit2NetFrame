@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatButton;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -14,21 +13,11 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import com.zhenggzh.dream.retrofitandrxjavademo.bean.WeatherResponseBean;
 import com.zhenggzh.dream.retrofitandrxjavademo.download.DownloadActivity;
-import com.zhenggzh.dream.retrofitandrxjavademo.netapi.HttpApi;
-import com.zhenggzh.dream.retrofitandrxjavademo.netsubscribe.DownloadSubscribe;
-import com.zhenggzh.dream.retrofitandrxjavademo.netsubscribe.WeatherSubscribe;
+import com.zhenggzh.dream.retrofitandrxjavademo.netsubscribe.WeatherApi;
 import com.zhenggzh.dream.retrofitandrxjavademo.netutils.OnSuccessAndFaultListener;
 import com.zhenggzh.dream.retrofitandrxjavademo.netutils.OnSuccessAndFaultSub;
-import com.zhenggzh.dream.retrofitandrxjavademo.netutils.RetrofitFactory;
 import com.zhenggzh.dream.retrofitandrxjavademo.operator.RxOperatorMainActivity;
 import com.zhenggzh.dream.retrofitandrxjavademo.utils.GsonUtils;
-import io.reactivex.functions.Consumer;
-import io.reactivex.functions.Function;
-import io.reactivex.schedulers.Schedulers;
-import java.io.InputStream;
-import java.util.Observable;
-import okhttp3.Response;
-import okhttp3.ResponseBody;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -81,7 +70,7 @@ public class MainActivity extends AppCompatActivity {
    * new OnSuccessAndFaultSub（第一个参数:成功or失败的回调，第二个参数:上下文，可以不填，控制dialog的）
    */
   private void getWeatherData() {
-    WeatherSubscribe.getWeatherDataForBody(mCityName, new OnSuccessAndFaultSub(new OnSuccessAndFaultListener() {
+    WeatherApi.getWeatherDataForBody(mCityName, new OnSuccessAndFaultSub(new OnSuccessAndFaultListener() {
       @Override
       public void onSuccess(String result) {
         //成功

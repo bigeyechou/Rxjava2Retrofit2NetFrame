@@ -25,7 +25,7 @@ import retrofit2.http.Url;
  * 存放所有的Api
  */
 
-public interface HttpApi {
+public interface HttpService {
     @GET("api")
     Observable<ResponseBody> getWeatherDataForQuery(@Query("version") String version, @Query("city") String city);
 
