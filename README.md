@@ -5,7 +5,7 @@
     down下来一定要配上自己的接口名，URLConstant和HttpApi的post/get()中！！！！！
     有相关操作符的解释，演示便于大家更快的了解使用强大的操作符~
 
-### 软件架构
+### 架构
     基于Retrofit+Rxjava+Okhttp封装的网络请求框架
     使用时请自行修改okhttp的公共参数（HeaderParam）
     1.HttpService请求的接口
